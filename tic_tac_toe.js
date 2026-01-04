@@ -22,3 +22,10 @@ function handleMove(position) {
         return false;
     }
 }
+
+if (checkWin()) {
+    printBoard();
+    console.log(`Player ${currentPlayer} wins!`);
+    gameActive = false;
+    return true;
+}
