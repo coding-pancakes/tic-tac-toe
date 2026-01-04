@@ -14,3 +14,11 @@ function printBoard() {
         `);
 }
 
+function handleMove(position) {
+    if (gameBoard[position] === " ") {
+        gameBoard[position] = currentPlayer;
+    } else {
+        console.log("Cell already taken, choose another one.");
+        return false;
+    }
+}
