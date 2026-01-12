@@ -15,31 +15,20 @@ function printBoard() {
 }
 
 function handleMove(position) {
-    if (gameBoard[position] === " ") {
-        gameBoard[position] = currentPlayer;
-    } else {
-        console.log("Cell already taken, choose another one.");
-        return false;
-    }
-}
-
-if (checkWin()) {
+    if (checkWin()) {
     printBoard();
     console.log(`Player ${currentPlayer} wins!`);
     gameActive = false;
     return true;
-}
-if (gameBoard.every((cell) => cell !== " ")) {
-    printBoard();
-    console.log("It's a draw!");
-    gameActive = false;
-    return true;
-}
-
-
-function handleMove(position) {
-    if (board[position] === " ") {
-        board[position] = currentPlayer;
+    }
+    if (gameBoard.every((cell) => cell !== " ")) {
+        printBoard();
+        console.log("It's a draw!");
+        gameActive = false;
+        return true;
+    }
+    if (gameBoard[position] === " ") {
+        gameBoard[position] = currentPlayer;
     } else {
         console.log("Cell already taken, choose another one.");
         return false;
@@ -90,7 +79,7 @@ while (gameActive) {
     const position = prompt(`Player ${currentPlayer}, enter your move (0-8): `);
 
     if (position >= 0 && position <=8) {
-        handleMove(parseINt(position));
+        handleMove(parseInt(position));
     } else {
         console.log("Invalid position, enter a number between 0 and 8.");
     }
