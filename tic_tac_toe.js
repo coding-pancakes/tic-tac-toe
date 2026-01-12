@@ -73,5 +73,14 @@ function handleMove(position) {
             [0, 4, 8],
             [2, 4, 6],
         ];
+
+        return conditions.some((condition) => {
+            const [a, b, c] = condition;
+            return (
+                gameBoard[a] === currentPlayer &&
+                gameBoard[b] === currentPlayer &&
+                gameBoard[c] === currentPlayer
+            );
+        });
     }
 }
