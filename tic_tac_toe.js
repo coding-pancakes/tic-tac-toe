@@ -35,3 +35,30 @@ if (gameBoard.every((cell) => cell !== " ")) {
     gameActive = false;
     return true;
 }
+
+
+function handleMove(position) {
+    if (board[position] === " ") {
+        board[position] = currentPlayer;
+    } else {
+        console.log("Cell already taken, choose another one.");
+        return false;
+    }
+
+    if (checkWin()) {
+        printBoard();
+        console.log(`Player ${currentPlayer} wins!`);
+        active = false ;
+        return true;
+    }
+
+    if (board.every((cell) => cell !== " ")) {
+        printBoard();
+        console.log("It's a draw!");
+        active = false ;
+        return true;
+    }
+    
+    currentPlayer = currentPlayer === "☕️" ? "🍩" : "☕️";
+    return true;
+}
