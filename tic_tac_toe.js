@@ -1,16 +1,16 @@
 const prompt = require("prompt-sync")();
 
-let gameBoard = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
+let board = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
 let currentPlayer = "☕️";
 let gameActive = true;
 
 function printBoard() {
     console.log(`
-        ${gameBoard[0]} | ${gameBoard[1]} | ${gameBoard[2]}
+        ${board[0]} | ${board[1]} | ${board[2]}
        ------------
-        ${gameBoard[3]} | ${gameBoard[4]} | ${gameBoard[5]}
+        ${board[3]} | ${board[4]} | ${board[5]}
        ------------
-        ${gameBoard[6]} | ${gameBoard[7]} | ${gameBoard[8]}
+        ${board[6]} | ${board[7]} | ${board[8]}
         `);
 }
 
@@ -21,14 +21,14 @@ function handleMove(position) {
     gameActive = false;
     return true;
     }
-    if (gameBoard.every((cell) => cell !== " ")) {
+    if (board.every((cell) => cell !== " ")) {
         printBoard();
         console.log("It's a draw!");
         gameActive = false;
         return true;
     }
-    if (gameBoard[position] === " ") {
-        gameBoard[position] = currentPlayer;
+    if (board[position] === " ") {
+        board[position] = currentPlayer;
     } else {
         console.log("Cell already taken, choose another one.");
         return false;
@@ -66,9 +66,9 @@ function handleMove(position) {
         return conditions.some((condition) => {
             const [a, b, c] = condition;
             return (
-                gameBoard[a] === currentPlayer &&
-                gameBoard[b] === currentPlayer &&
-                gameBoard[c] === currentPlayer
+                board[a] === currentPlayer &&
+                board[b] === currentPlayer &&
+                board[c] === currentPlayer
             );
         });
     }
